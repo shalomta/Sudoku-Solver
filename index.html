@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="index.css">
+    <title>Sudoku Solver</title>
+    <script type="module" src="js/app_sudoku.js"></script>
+</head>
+
+<body>
+    <div id="light_box" class="light_box">
+        <div class="inside_box">
+            <h2>Solving...</h2>
+            <button id="id_btn_light_box" class="btn mt-5 bg-success">Cancel</button>
+        </div>
+    </div>
+    <main class="container text-center">
+        <h1>Sudoku Solver</h1>
+        <div id="id_sudoku_div" class="sudoku_div d-flex justify-content-center">
+        </div>
+        <div id="id_buttons_div" class="buttons_div"></div>
+        <button id="id_solve_btn" class="btn btn-info mt-1">Solve</button>
+    </main>
+</body>
+
+</html>
