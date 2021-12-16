@@ -92,9 +92,9 @@ const declareEvents = () => {
         let worker = new Worker("./worker.js", { type: "module" });
         worker.onmessage = event => {
             document.querySelector("#light_box").style.display = "none";
-            let sudoku_obj = event.data;
-            if (sudoku_obj.success) {
-                writeTable(sudoku_obj.table);
+            sudoku_ar = event.data;
+            if (sudoku_ar.success) {
+                writeTable(sudoku_ar.table);
             }
             else {
                 alert("This sudoku cannot be solved");

@@ -86,8 +86,12 @@ export const createButtons = (sudoku_ar) => {
 
         btn.addEventListener("click", () => {
             if (isLegal(i, counter, sudoku_ar)) {
-                document.querySelector(`#box_${counter[0]}_${counter[1]}`).innerHTML = i;
-                sudoku_ar[counter[0]][counter[1]] = i;
+                console.log(isPermenant());
+                console.log(sudoku_ar);
+                if (!isPermenant()){
+                    document.querySelector(`#box_${counter[0]}_${counter[1]}`).innerHTML = i;
+                    sudoku_ar[counter[0]][counter[1]] = i;
+                }
             }
         })
     }
@@ -98,17 +102,22 @@ export const createButtons = (sudoku_ar) => {
     buttons_div.append(btn);
 
     btn.addEventListener("click", () => {
-        let isPermenant = false;
-        permenant_counters.forEach(item => {
-            if (item.toString() == counter.toString()) {
-                isPermenant = true;
-            }
-        });
-        if (!isPermenant) {
+        if (!isPermenant()) {
             document.querySelector(`#box_${counter[0]}_${counter[1]}`).innerHTML = '';
             sudoku_ar[counter[0]][counter[1]] = '';
         }
     })
+}
+
+// Checking if the current counter is permenant and connot be changed
+const isPermenant = () => {
+    let _isPermenant = false;
+    permenant_counters.forEach(item => {
+        if (item.toString() == counter.toString()) {
+            _isPermenant = true;
+        }
+    });
+    return _isPermenant;
 }
 
 export const sleep = (milliseconds) => {
