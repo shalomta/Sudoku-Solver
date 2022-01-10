@@ -51,7 +51,7 @@ let empty_sudoku_ar = [
     [[], [], [], [], [], [], [], [], []]
 ];
 
-let sudoku_ar = sudoku_ar3;
+export let sudoku_ar = [...sudoku_ar3];
 
 export let counter = [0, 0];
 // export let permenant_counters = [];
@@ -69,6 +69,13 @@ const init = () => {
 }
 
 const declareEvents = () => {
+    document.querySelector("#id_clear_btn").addEventListener("click", () => {
+        console.log(empty_sudoku_ar);
+        sudoku_ar = [...empty_sudoku_ar];
+        writeTable(sudoku_ar);
+        console.log(sudoku_ar);
+    })
+
     document.querySelector("#id_solve_btn").addEventListener("click", () => {
         // writePermenantCounters();
         // Making the selected box frame black again
@@ -92,13 +99,15 @@ const declareEvents = () => {
         let worker = new Worker("./worker.js", { type: "module" });
         worker.onmessage = event => {
             document.querySelector("#light_box").style.display = "none";
-            sudoku_ar = event.data;
-            if (sudoku_ar.success) {
-                writeTable(sudoku_ar.table);
+            let result = event.data;
+            sudoku_ar = [...result.table];
+            if (result.success) {
+                writeTable(sudoku_ar);
             }
             else {
                 alert("This sudoku cannot be solved");
             }
+            console.log("worker done");
         }
 
         // Adding an event listener to the light box close button so that it will

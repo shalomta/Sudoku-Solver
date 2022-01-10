@@ -24,10 +24,11 @@ export const isLegal = (number, position, table) => {
 }
 
 export const colorPermenantPositions = (sudoku_ar) => {
+    console.log(sudoku_ar);
     for (let i = 0; i < 9; i++) {
         for (let j = 0; j < 9; j++) {
             if (sudoku_ar[i][j] == '') {
-                // document.querySelector(`#box_${i}_${j}`).style.color = "lightslategrey";
+                document.querySelector(`#box_${i}_${j}`).style.fontWeight = "normal";
             }
             else{
                 document.querySelector(`#box_${i}_${j}`).style.fontWeight = "bold";
@@ -37,13 +38,12 @@ export const colorPermenantPositions = (sudoku_ar) => {
 }
 
 export const writePermenantPositions = (sudoku_ar) => {
+    console.log(sudoku_ar);
     let permenant_counters = [];
-    let count = 0;
     for (let i = 0; i < 9; i++) {
         for (let j = 0; j < 9; j++) {
             if (sudoku_ar[i][j] != '') {
                 permenant_counters.push([i, j]);
-                count++;
             }
         }
     }

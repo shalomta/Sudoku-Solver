@@ -1,4 +1,4 @@
-import { counter } from "./app_sudoku.js";
+import { counter, sudoku_ar } from "./app_sudoku.js";
 import { isLegal, writePermenantPositions } from "./sudoku_functions.js";
 
 let permenant_counters = [];
@@ -56,6 +56,7 @@ export const createTable = (sudoku_ar) => {
 // Writing to the screen a given sudoku
 export const writeTable = (sudoku_ar) => {
     permenant_counters = writePermenantPositions(sudoku_ar);
+    // console.log(permenant_counters);
     emptySudoku();
     for (let row = 0; row < sudoku_ar.length; row++) {
         for (let column = 0; column < sudoku_ar[row].length; column++) {
@@ -75,8 +76,9 @@ const emptySudoku = () => {
 }
 
 // rendering buttons to HTML
-export const createButtons = (sudoku_ar) => {
+export const createButtons = () => {
     let buttons_div = document.querySelector("#id_buttons_div");
+    buttons_div.innerHTML = '';
 
     for (let i = 1; i <= 9; i++) {
         let btn = document.createElement("button");
@@ -86,8 +88,8 @@ export const createButtons = (sudoku_ar) => {
 
         btn.addEventListener("click", () => {
             if (isLegal(i, counter, sudoku_ar)) {
-                console.log(isPermenant());
-                console.log(sudoku_ar);
+                // console.log(isPermenant());
+                // console.log(sudoku_ar);
                 if (!isPermenant()){
                     document.querySelector(`#box_${counter[0]}_${counter[1]}`).innerHTML = i;
                     sudoku_ar[counter[0]][counter[1]] = i;
