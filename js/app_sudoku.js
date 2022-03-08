@@ -1,5 +1,5 @@
-import { isLegal, colorPermenantPositions } from "./sudoku_functions.js";
-import { sleep, createTable, createButtons, writeTable } from "./utils.js";
+import { colorPermenantPositions } from "./sudoku_functions.js";
+import { createTable, createButtons, writeTable } from "./utils.js";
 
 // initalized sudoku array
 let filled_sudoku_ar = [
@@ -39,7 +39,7 @@ let sudoku_ar3 = [
 ]
 
 // empty sudoku array
-let empty_sudoku_ar = [
+const empty_sudoku_ar = [
     [[], [], [], [], [], [], [], [], []],
     [[], [], [], [], [], [], [], [], []],
     [[], [], [], [], [], [], [], [], []],
@@ -69,11 +69,14 @@ const init = () => {
 }
 
 const declareEvents = () => {
+    // Adding an event listener to the clear button to clean the array
     document.querySelector("#id_clear_btn").addEventListener("click", () => {
-        console.log(empty_sudoku_ar);
-        sudoku_ar = [...empty_sudoku_ar];
+        console.table( empty_sudoku_ar);
+        // copying the empty array to the sudoku_ar
+        for(let i = 0; i < empty_sudoku_ar.length; i++){
+            sudoku_ar[i] = [...empty_sudoku_ar[i]];
+        }
         writeTable(sudoku_ar);
-        console.log(sudoku_ar);
     })
 
     document.querySelector("#id_solve_btn").addEventListener("click", () => {

@@ -23,6 +23,7 @@ export const isLegal = (number, position, table) => {
     return true;
 }
 
+// Coloring the cells that has numbers in them 
 export const colorPermenantPositions = (sudoku_ar) => {
     console.log(sudoku_ar);
     for (let i = 0; i < 9; i++) {
@@ -37,6 +38,7 @@ export const colorPermenantPositions = (sudoku_ar) => {
     }
 }
 
+// Returning an array with the positions of the non empty cells 
 export const writePermenantPositions = (sudoku_ar) => {
     console.log(sudoku_ar);
     let permenant_counters = [];
