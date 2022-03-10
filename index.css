@@ -25,7 +25,7 @@ body{
     display: none;
   }
 
-  .light_box .inside_box{
+.light_box .inside_box{
     color: lightseagreen;
     padding:8px;
     max-width: 600px;
@@ -33,6 +33,10 @@ body{
     text-align: center;
     box-sizing: border-box;
   }
+
+main{
+    height: 100vh;
+}
 
 main .sudoku_div{
     margin: 0px 0;
